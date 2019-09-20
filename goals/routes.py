@@ -6,8 +6,6 @@ from flask_jwt_extended import (
     get_jwt_identity
 )
 
-
-
 mod = Blueprint('goals', __name__, url_prefix='/goals')
 
 @mod.route('/all', methods=['GET', 'DELETE'])
@@ -27,10 +25,6 @@ def goals_all():
             db_response = mongo.db.goals.delete_one({'_id': goal_id})
         mongo.db.user.update_one(user, {'$set': {'goals': []} })
         return jsonify({'ok': True, 'message': 'record deleted'}), 200
-
-
-
-
 
 @mod.route('', methods=['GET', 'POST', 'DELETE', 'PATCH'])
 @jwt_required
@@ -91,5 +85,3 @@ def post_goal(user, data):
 
 def init_app(app):
     app.register_blueprint(mod)
-
-
