@@ -1,0 +1,17 @@
+version: '2'
+services:
+  api:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    command: python run.py
+    ports: "5000:5000"
+    links:
+      - db
+    environment:
+      - JWT_SECRET_KEY=b'a\xc40\xcfg\xeb\xaa\xf5\xda\x94\x19M\xd3\xb8^\xe9\xdc\x91\x90\xce\xc7\x97\xbc\xdc'
+      - SESSION_COOKIE_SECURE=True
+  db:
+    image: mongo:4.0.3
+
+
