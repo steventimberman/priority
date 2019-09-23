@@ -12,6 +12,7 @@ flask-jwt-extended = "*"
 flask-bcrypt = "*"
 jsonschema = "*"
 pbr = "*"
+attrs = "*"
 
 [requires]
 python_version = "3.7"
